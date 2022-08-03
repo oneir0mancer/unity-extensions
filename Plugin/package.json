@@ -1,0 +1,12 @@
+{
+    "name": "com.oneir0mancer.unityextension",
+    "version": "1.0.0",
+    "displayName": "Helpful Unity Extensions",
+    "description": "Extensions for unity layers, collections, coroutines, math, UI",
+    "unity": "2021.3",
+    "unityRelease": "1f1",
+    "author": {
+        "name": "oneir0mancer",
+        "email": "oneir0mancer.games@gmail.com"
+    }
+}
