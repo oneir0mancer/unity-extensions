@@ -1,7 +1,7 @@
 ﻿namespace UnityEngine.UI.Extensions
 {
     [AddComponentMenu("UI/Extensions/Slider Window Extension")]
-    public class SliderMinMaxWindow : ISliderExtension
+    public class SliderMinMaxWindow : BaseSliderExtension
     {
         [SerializeField] private float _windowDelta;
         [SerializeField] private bool _floorToInt;

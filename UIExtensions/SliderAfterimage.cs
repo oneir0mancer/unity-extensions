@@ -3,7 +3,7 @@ using System.Collections;
 namespace UnityEngine.UI.Extensions
 {
     [AddComponentMenu("UI/Extensions/Slider Afterimage")]
-    public class SliderAfterimage : ISliderExtension
+    public class SliderAfterimage : BaseSliderExtension
     {
         [SerializeField, Min(0)] private float _speed = 0.1f;
         [SerializeField, Min(0)] private float _pauseTime = 0.1f;

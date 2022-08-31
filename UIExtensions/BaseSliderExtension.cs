@@ -1,10 +1,8 @@
-using UnityEngine;
-
 namespace UnityEngine.UI.Extensions
 {
     [ExecuteAlways]
     [RequireComponent(typeof(Slider))]
-    public abstract class ISliderExtension : MonoBehaviour
+    public abstract class BaseSliderExtension : MonoBehaviour
     {
         [SerializeField] protected Slider _slider;
         [SerializeField] protected RectTransform _fillRect;

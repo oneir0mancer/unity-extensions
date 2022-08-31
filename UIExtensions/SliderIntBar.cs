@@ -1,7 +1,7 @@
 namespace UnityEngine.UI.Extensions
 {
     [AddComponentMenu("UI/Extensions/Back Slider Extension")]
-    public class SliderIntBar : ISliderExtension
+    public class SliderIntBar : BaseSliderExtension
     {
         protected override void SetValue(float value)
         {
