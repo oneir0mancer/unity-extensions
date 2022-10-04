@@ -1,8 +1,8 @@
 {
     "name": "com.oneir0mancer.unityextension",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "displayName": "Helpful Unity Extensions",
-    "description": "Extensions for unity layers, collections, coroutines, math, UI",
+    "description": "Extensions for unity layers, collections, coroutines, math, UI, tweening",
     "unity": "2019.1",
     "author": {
         "name": "oneir0mancer",

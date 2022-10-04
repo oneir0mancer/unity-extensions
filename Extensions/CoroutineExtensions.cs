@@ -65,5 +65,29 @@ namespace Oneiromancer.Extensions
                 everyFrameCallback?.Invoke(t);
             }
         }
+        
+        /// Enumerator that invokes <paramref name="progressAction"/> every frame for a <paramref name="duration"/>
+        /// with time as float argument mapped to [0, 1]
+        public static IEnumerator Progress(float duration, System.Action<float> progressAction)
+        {
+            for (float t = 0; t < duration; t += Time.deltaTime)
+            {
+                progressAction?.Invoke(t / duration);
+                yield return null;
+            }
+            progressAction?.Invoke(1);
+        }
+        
+        /// Enumerator that invokes <paramref name="progressAction"/> and suspends execution for a time specified by
+        /// <paramref name="tickFunc"/>. Repeats this, passing current tick as int argument mapped to [0, <paramref name="tickCount"/>]
+        public static IEnumerator Progress(int tickCount, System.Action<int> progressAction, System.Func<IEnumerator> tickFunc)
+        {
+            for (int t = 0; t < tickCount; t++)
+            {
+                progressAction?.Invoke(tickCount);
+                yield return tickFunc;
+            }
+            progressAction?.Invoke(tickCount);
+        }
     }
 }
