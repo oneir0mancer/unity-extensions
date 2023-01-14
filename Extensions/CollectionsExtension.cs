@@ -66,5 +66,13 @@ namespace Oneiromancer.Extensions
         
         /// System.Array.Find wrapper
         public static T Find<T>(this T[] array, System.Predicate<T> match) => System.Array.Find(array, match);
+        
+        /// Get value from dictionary by key, or default value if such key doesnt exist
+        public static TV GetValueOrDefault<TK, TV>(this IDictionary<TK, TV> dictionary, TK key,
+            TV defaultValue = default)
+        {
+            if (dictionary == null) return defaultValue;
+            return dictionary.TryGetValue(key, out var value) ? value : defaultValue;
+        }
     }
 }
