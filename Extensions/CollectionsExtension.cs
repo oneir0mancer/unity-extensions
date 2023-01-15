@@ -11,10 +11,19 @@ namespace Oneiromancer.Extensions
         {
             float product = 1;
             foreach (var item in list)
-            {
                 product *= item;
-            }
+            
             return product;
+        }
+        
+        /// Returns a sum of all elements in collection (LINQ sum casts to double)
+        public static float Sum(this IEnumerable<float> list)
+        {
+            float sum = 0;
+            foreach (var item in list)
+                sum += item;
+            
+            return sum;
         }
     
         /// Returns max element of array or null if array is empty
