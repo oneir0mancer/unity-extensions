@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Oneiromancer.Utils;
 
 namespace Oneiromancer.Modifiers
 {
-    public abstract class ValueModifier<T> where T : unmanaged
+    public abstract class ValueModifier<T> where T : unmanaged, IEquatable<T>
     {
         protected readonly List<ValueWrapper<T>> _multiplicativeModifiers = new List<ValueWrapper<T>>();
         protected readonly List<ValueWrapper<T>> _additiveModifiers = new List<ValueWrapper<T>>();

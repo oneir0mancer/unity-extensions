@@ -33,7 +33,7 @@ namespace Oneiromancer.Extensions
         /// Suspends the coroutine execution for `time` seconds of until the supplied delegate evaluates to true 
         public static IEnumerator WaitForSecondsOrCondition(float time, System.Func<bool> condition)
         {
-            for (float t = 0; t < time || condition(); t += Time.deltaTime)
+            for (float t = 0; t < time && !condition(); t += Time.deltaTime)
             {
                 yield return null;
             }

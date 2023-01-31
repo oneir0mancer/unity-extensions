@@ -1,4 +1,4 @@
-﻿namespace Oneiromancer.Modifiers
+﻿namespace Oneiromancer.Utils
 {
     /// A wrapper to ref r-value types
     public class ValueWrapper<T> where T : unmanaged
