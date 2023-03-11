@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Oneiromancer.Extensions
 {
@@ -12,9 +13,28 @@ namespace Oneiromancer.Extensions
         }
     
         /// Remap value from [inMin, inMax] to [outMin, outMax]
-        public static float Remap (this float value, float inMin, float inMax, float outMin, float outMax) 
+        public static float Remap(this float value, float inMin, float inMax, float outMin, float outMax) 
         {
             return (value - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
+        }
+        
+        public static Vector2 Abs(this Vector2 value)
+        {
+            value.x = Mathf.Abs(value.x);
+            value.y = Mathf.Abs(value.y);
+            return value;
+        }
+        
+        public static Vector2 SwapComponents(this Vector2 value)
+        {
+            (value.x, value.y) = (value.y, value.x);
+            return value;
+        }
+        
+        /// Snap value to nearest position on grid with cell size of <paramref name="gridSize"/>
+        public static float SnapToGrid(this float value, float gridSize) 
+        {
+            return Mathf.Round(value / gridSize) * gridSize;
         }
         
         /// Returns a product of all elements in collection
