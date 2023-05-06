@@ -40,6 +40,26 @@ namespace Oneiromancer.Extensions
             return s.ToString();
         }
         
+        /// Returns a json-like string of all elements of list mapped to string
+        public static string ElementsToString<T>(this IReadOnlyList<T> list, System.Func<T, string> map)
+        {
+            StringBuilder s = new StringBuilder("[ ");
+            foreach (var item in list) 
+                s.Append($"{map(item)}, ");
+            s.Append("]");
+            return s.ToString();
+        }
+        
+        /// Returns a json-like string with all elements of dict
+        public static string ElementsToString<TK, TV>(this Dictionary<TK, TV> dict)
+        {
+            StringBuilder s = new StringBuilder("{\n");
+            foreach (var item in dict) 
+                s.Append($"{{ {item.Key.ToString()}, {item.Value.ToString()} }}\n ");
+            s.Append("}");
+            return s.ToString();
+        }
+        
         /// Shuffles a list inplace
         public static void Shuffle<T>(this IList<T> list)
         {
