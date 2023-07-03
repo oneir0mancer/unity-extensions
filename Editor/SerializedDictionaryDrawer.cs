@@ -35,7 +35,7 @@ namespace Oneiromancer.Utils
  
             var foldoutRect = position;
             foldoutRect.width -= 2 * _mainButtonWidth;
-            EditorGUI.BeginChangeCheck();
+            //EditorGUI.BeginChangeCheck();
             if (!_foldout) label.text += $" ({_dictionary.Count} items)";
             _foldout = EditorGUI.Foldout(foldoutRect, _foldout, label, true);
             
@@ -118,12 +118,12 @@ namespace Oneiromancer.Utils
         
         private void CheckInitialize(SerializedProperty property, GUIContent label)
         {
-            if (_dictionary == null)
-            {
-                var target = property.serializedObject.targetObject;
-                _dictionary = fieldInfo.GetValue(target) as IDictionary;
-                _foldout = EditorPrefs.GetBool(label.text);
-            }
+            if (_dictionary != null) return;
+            
+            var target = property.serializedObject.targetObject;
+            var inst = EditorHelper.GetTargetObjectOfProperty(property, target);
+            _dictionary = inst as IDictionary;
+            _foldout = EditorPrefs.GetBool(label.text);
         }
         
         private void ClearDictionary()
