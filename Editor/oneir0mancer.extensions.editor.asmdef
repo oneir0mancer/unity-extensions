@@ -1,0 +1,18 @@
+{
+    "name": "oneir0mancer.extensions.editor",
+    "rootNamespace": "",
+    "references": [
+        "oneir0mancer.extensions"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
