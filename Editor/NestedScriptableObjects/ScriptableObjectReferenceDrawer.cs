@@ -1,5 +1,6 @@
 ﻿using System.IO;
-using System.Reflection;﻿
+using System.Reflection;
+using Oneiromancer.Utils;
 using UnityEditor;
 using UnityEngine;
 
@@ -48,18 +49,20 @@ namespace Oneiromancer.NestedScriptableObjects
                     }
                 }
             }
-
-            if (valueProperty.objectReferenceValue == null &&
-                EditorGUI.DropdownButton(rect, new GUIContent("Add Nested"), FocusType.Passive))
+            else
             {
-                GenericMenu menu = new GenericMenu();
-                foreach (var t in this.fieldInfo.FieldType.GetGenericArguments())
+                if (EditorGUI.DropdownButton(rect, new GUIContent("Add Nested"), FocusType.Passive))
                 {
-                    PopulateMenu(property, menu, t);
+                    GenericMenu menu = new GenericMenu();
+                    //TODO can try to use generic static class as a cache for this
+                    foreach (var t in EditorHelper.GetTypeOfProperty(property).GetGenericArguments())
+                    {
+                        PopulateMenu(property, menu, t);
+                    }
+                    menu.ShowAsContext();
                 }
-                menu.ShowAsContext();
             }
-            
+
             EditorGUI.EndProperty ();
         }
 
