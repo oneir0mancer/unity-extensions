@@ -76,5 +76,26 @@ namespace Oneiromancer.Extensions
             
             return sum;
         }
+        
+        /// Returns a framerate-independent "lerp" from `a` to `b` over `deltaTime`.
+        /// `decay` is exponential decay slope, useful range approx. 1 to 25, from slow to fast.
+        /// <remarks>See Freya's presentation: https://youtu.be/LSNQuFEDOyQ?t=2978</remarks>
+        public static float LerpExpDecay(float a, float b, float decay, float deltaTime)
+        {
+            return Mathf.Lerp(a, b, 1 - Mathf.Exp(-decay * deltaTime));
+        }
+
+        /// Returns a framerate-independent "lerp" from `a` to `b` over Time.deltaTime (of Time.fixedDeltaTime if called from FixedUpdate).
+        public static float LerpExpDecay(float a, float b, float decay) => LerpExpDecay(a, b, decay, Time.deltaTime);
+        
+        /// Returns a framerate-independent "lerp" from vector `a` to `b` over `deltaTime`.
+        /// `decay` is exponential decay slope, useful range approx. 1 to 25, from slow to fast.
+        public static Vector3 LerpExpDecay(Vector3 a, Vector3 b, float decay, float deltaTime)
+        {
+            return Vector3.Lerp(a, b, 1 - Mathf.Exp(-decay * deltaTime));
+        }
+        
+        /// Returns a framerate-independent "lerp" from vector `a` to `b` over Time.deltaTime (of Time.fixedDeltaTime if called from FixedUpdate).
+        public static Vector3 LerpExpDecay(Vector3 a, Vector3 b, float decay) => LerpExpDecay(a, b, decay, Time.deltaTime);
     }
 }
